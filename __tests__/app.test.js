@@ -14,4 +14,15 @@ describe('magic routes', () => {
     const res = await request(app).get('/magic');
     expect(res.body.length).toEqual(5);
   });
+  it('/magic/:id returns cards detail', async () => {
+    const res = await request(app).get('/magic/1');
+    const bolt = {
+      id: '1',
+      name: 'Lightning Bolt',
+      color: 'red',
+      cmc: 'r',
+      type: 'instant',
+    };
+    expect(res.body).toEqual(bolt);
+  });
 });
